@@ -1,0 +1,19 @@
+dt {
+    float: left;
+    font-weight: normal;
+    margin-right: 0.25em;
+}
+
+dt:after
+{
+    content:": ";
+}
+
+dd {
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+

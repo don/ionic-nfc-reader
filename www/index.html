@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+
+    (c) 2014 Don Coleman
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="ionicNFC" ng-controller="MainController">
+
+<ion-pane>
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">NFC Reader</h1>
+        <button class="button button-clear button-positive" ng-click="clear()" ng-if="tag.id">Clear</button>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-if="!tag.id">
+            <div class="card">
+                <div class="item item-text-wrap center">
+                    Scan a tag to being.
+                </div>
+            </div>
+        </div>
+        <div ng-if="tag.id">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <dl>
+                        <dt>Tag Id</dt>
+                        <dd>{{ tag.id | bytesToHexString }}</dd>
+                        <dt>Tag Type</dt>
+                        <dd>{{ tag.type }}</dd>
+                        <!-- TODO techTypes -->
+                        <dt>Max Size</dt>
+                        <dd>{{ tag.maxSize }} bytes</dd>
+                        <dt>Is Writable</dt>
+                        <dd>{{ tag.isWritable }}</dd>
+                        <dt>Can Make Read Only</dt>
+                        <dd>{{ tag.canMakeReadOnly }}</dd>
+                    </dl>
+                    <div class="card" ng-repeat="record in tag.ndefMessage">
+                        <div class="item item-divider">
+                            Record {{$index + 1}} <br/>
+                        </div>
+                        <div class="item item-text-wrap">
+                            <dl>
+                                <dt>TNF</dt>
+                                <dd>{{ record.tnf | tnfToString }}</dd>
+                                <dt>Record Type</dt>
+                                <dd>{{ record.type | bytesToString }}</dd>
+                                <dt ng-if="record.id">Record Id</dt>
+                                <dd ng-if="record.id">{{ record.id | bytesToString }}</dd>
+                                <dt>Payload</dt>
+                                <dd>{{ record | decodePayload }}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-pane>
+</body>
+</html>
