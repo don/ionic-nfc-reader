@@ -5,10 +5,6 @@ This project demonstrates reading NFC tags using [Apache Cordova](http://cordova
 This is an [Ionic Framework](http://ionicframework.com/) port of [phonegap-nfc-reader](https://github.com/don/phonegap-nfc-reader)
 
 Your computer needs to be set up for Cordova and Android development.
-
-Install Ionic
-
-    $ npm install -g ionic
     
 Install Plugin and Platform
 
