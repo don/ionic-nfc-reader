@@ -28,6 +28,7 @@ angular.module('ionicNFC', ['ionic', 'nfcFilters'])
         var tag = {};
 
         $ionicPlatform.ready(function() {
+
             nfc.addNdefListener(function (nfcEvent) {
                 console.log(JSON.stringify(nfcEvent.tag, null, 4));
                 $rootScope.$apply(function(){
@@ -38,6 +39,17 @@ angular.module('ionicNFC', ['ionic', 'nfcFilters'])
                 console.log("Listening for NDEF Tags.");
             }, function (reason) {
                 alert("Error adding NFC Listener " + reason);
+            });
+
+            nfc.addMimeTypeListener('text/any', function (nfcEvent) {
+                console.log(JSON.stringify(nfcEvent.tag, null, 4));
+                $rootScope.$apply(function(){
+                    angular.copy(nfcEvent.tag, tag);
+                });
+            }, function () {
+                console.log("Added Mime Type Listener.");
+            }, function (reason) {
+                alert("Error adding Mime Type Listener " + reason);
             });
 
         });
