@@ -3,10 +3,10 @@
   <name>NFC Reader</name>
   <description>
         PhoneGap NFC Reader rewritten with Ionic Framework
-    </description>
+  </description>
   <author email="don.coleman@gmail.com" href="https://github.com/don">
       Don Coleman
-    </author>
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
@@ -16,4 +16,7 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <platform name="android">
+    <preference name="android-targetSdkVersion" value="22" />
+  </platform>
 </widget>
