@@ -6,11 +6,15 @@ This is an [Ionic Framework](http://ionicframework.com/) port of [phonegap-nfc-r
 
 Your computer needs to be set up for Cordova and Android development.
 
+Install Ionic 1.x
+
+    $ npm install -g ionic
+
 Install Plugin and Platform
 
-    $ cordova platform add android
-    $ cordova plugin add phonegap-nfc
+    $ ionic platform add android
+    $ ionic plugin add phonegap-nfc
 
 Plug in your NFC enabled Android phone and run the app
 
-    $ cordova run --device
+    $ ionic run --device
