@@ -25,7 +25,7 @@ Most of the code in this project is generated boilerplate. The files I modified 
 
 * [www/index.html](www/index.html)
 * [www/js/app.js](www/js/app.js)
-* [www/js/filter.js](www/js/filter.js)
+* [www/js/filters.js](www/js/filters.js)
 * [www/css/style.css](www/css/style.css)
 
 If you're starting a new project with Ionic v3, take a look at the [Ionic Native wrappers for phonegap-nfc](https://ionicframework.com/docs/native/nfc/).
